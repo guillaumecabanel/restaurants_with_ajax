@@ -1,0 +1,4 @@
+<li data-review-id="<%= review.id %>">
+  <%= review.description %>
+  <%= link_to "Delete", review_path(review), method: :delete, remote: true %>
+</li>
