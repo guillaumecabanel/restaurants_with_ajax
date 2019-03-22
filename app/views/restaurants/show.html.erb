@@ -1,4 +1,24 @@
-<%= render 'card', restaurant: @restaurant %>
+<%= render 'restaurants/card', restaurant: @restaurant %>
+
+<br>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.description %></li>
+  <% end %>
+</ul>
+
+<% if @restaurant.reviews.empty? %>
+  <div class="notification">
+    No reviews yet, be the first!
+  </div>
+<% end %>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
+
 
 <br>
 <%= link_to 'Back', restaurants_path %>
